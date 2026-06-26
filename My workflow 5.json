@@ -1,0 +1,97 @@
+{
+  "name": "My workflow 5",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1C38j4xRQGn71vT7gpqvfkcFtamQj7VPagehAAnT-lqI",
+          "mode": "list",
+          "cachedResultName": "EMPLOYESS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1C38j4xRQGn71vT7gpqvfkcFtamQj7VPagehAAnT-lqI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1C38j4xRQGn71vT7gpqvfkcFtamQj7VPagehAAnT-lqI/edit#gid=0"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3914683b-c1dc-40ee-beed-1e4caecf3b6b",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "cGAFwulaJxK5DbSR",
+          "name": "GOOGLE SHEET"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.Email }}",
+        "subject": "NEW TASK",
+        "emailType": "text",
+        "message": "={{ $json.Name }} HI\nR U TASK HS BEEN ASSIGN TO U! {{ $json.Email }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "f951b2f1-2e69-4669-8646-a7a80ae0b8b9",
+      "name": "Send a message",
+      "webhookId": "b827580a-5dda-4a8a-8833-b7176e5541a7",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "HkDa3KmhfK22ObHC",
+          "name": "Gmail account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "a84acd3b-bcd7-42b6-8f0c-10bc6a57ef6e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "43fe3b721e3b45c84a8a0ead5c0e0d1cd07509446e9cf0223381c800ab5075dd"
+  },
+  "nodeGroups": [],
+  "id": "JNRlXdYdsB5Zcyrl",
+  "tags": []
+}
